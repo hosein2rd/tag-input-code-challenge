@@ -4,7 +4,7 @@ See [demo](https://tag-input-code-challenge.herokuapp.com/) =)
 
 This project is just a code challenge and no more :)
 
-## Components
+## components
 
 ### **BaseTextInput**
 
@@ -35,9 +35,13 @@ This is a dropdown and user can select item from it. Also user can choose item u
 
 This component contains **BaseTextInput**, **List**, **TagContainer** and **Tag**.
 
-## Types
+## types
 
 This directory contains types.
+
+## api
+
+I mocked the api of getting labels with filter.
 
 ## Available Scripts
 
