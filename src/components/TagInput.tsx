@@ -5,8 +5,7 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import Tag from "./Tag";
 import TagContainer from "./TagContainer";
-import fuzzysort from "fuzzysort";
-import labels from "../data.json";
+import { getLabels } from "../api/labels";
 
 const Container = styled.div`
   position: relative;
@@ -16,7 +15,7 @@ const Container = styled.div`
 
 const TagInput = () => {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [options, setOptions] = useState<Label[]>(labels);
+  const [options, setOptions] = useState<Label[]>([]);
   const [tags, setTags] = useState<Label[]>([]);
   const [value, setValue] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
@@ -44,15 +43,13 @@ const TagInput = () => {
       : setActiveIndex(options.length - 1);
 
   useEffect(() => {
-    if (!value) return setOptions(labels);
+    getLabels(value).then((labels) => {
+      setActiveIndex(0);
 
-    setActiveIndex(0);
+      setOptions(labels);
 
-    const result = fuzzysort.go<Label>(value, labels, { key: "label" });
-
-    setOptions(result.map((item) => item.obj));
-
-    setShowDropdown(result.length !== 0);
+      setShowDropdown(labels.length !== 0);
+    });
   }, [value]);
 
   const onKeyPress = (e: React.KeyboardEvent) => {
