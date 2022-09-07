@@ -1,6 +1,6 @@
 # Tag Input Code Challege
 
-See [demo](https://facebook.github.io/create-react-app/docs/deployment) =)
+See [demo](https://tag-input-code-challenge.herokuapp.com/) =)
 
 This project is just a code challenge and no more :)
 
